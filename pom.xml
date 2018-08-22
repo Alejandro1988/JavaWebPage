@@ -6,6 +6,7 @@
     <groupId>Ale</groupId>
     <artifactId>JavaWebPage</artifactId>
     <version>1.0</version>
+    <name>Java web app</name>
     <packaging>pom</packaging>
 
     <properties>
@@ -13,10 +14,6 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <modules>
-        <module>Backend</module>
-        <module>Frontend</module>
-    </modules>
     <build>
         <plugins>
             <!-- Package as an executable jar/war -->
@@ -25,6 +22,37 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.0.3.RELEASE</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <!-- This is a web application -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.0.3.RELEASE</version>
+        </dependency>
+        <!-- Tomcat embedded container-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>2.0.3.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--junit para hacer test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
