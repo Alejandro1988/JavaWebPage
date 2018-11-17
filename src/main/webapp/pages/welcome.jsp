@@ -1,133 +1,36 @@
-<%@page session="false" %>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-
-<html lang="es">
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
 <head>
-    <title>Java Web Page</title>
-
-    <c:url var="home" value="/" scope="request"/>
-
-    <spring:url value="/resources/core/css/hello.css" var="coreCss"/>
-    <spring:url value="/resources/core/css/bootstrap.min.css"
-                var="bootstrapCss"/>
-    <link href="${bootstrapCss}" rel="stylesheet"/>
-    <link href="${coreCss}" rel="stylesheet"/>
-
-    <spring:url value="/resources/core/js/jquery.1.10.2.min.js"
-                var="jqueryJs"/>
-    <script src="${jqueryJs}"></script>
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Java Web Page</a>
-        </div>
-    </div>
-</nav>
+<h1>Esto no es un Titulo</h1>
 
-<div class="container" style="min-height: 500px">
+<h2>Usuarios</h2>
+<s:form action="addUsuario">
+    <s:textfield name="nombre" label="Nombre" value=""/>
+    <%--<s:textarea name="address" label="Address" value="" cols="50" rows="5" />--%>
+    <s:submit/>
+</s:form>
 
-    <div class="starter-template">
-        <h1>Search Form</h1>
-        <br>
+<h2>Todos los Usuarios</h2>
 
-        <div id="feedback"></div>
-
-        <form class="form-horizontal" id="search-form">
-            <div class="form-group form-group-lg">
-                <label for="username" class="col-sm-2 control-label">Username</label>
-                <div class="col-sm-10">
-                    <input type=text class="form-control" id="username">
-                </div>
-            </div>
-            <div class="form-group form-group-lg">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" id="bth-search"
-                            class="btn btn-primary btn-lg">Search
-                    </button>
-                </div>
-            </div>
-        </form>
-
-    </div>
-
-</div>
-
-<div class="container">
-    <footer>
-        <p>
-            &copy; <a>Alejandro Alvarez Ferretti</a>
-        </p>
-    </footer>
-</div>
-
-<script>
-    jQuery(document).ready(function ($) {
-
-        $("#search-form").submit(function (event) {
-
-            // Disble the search button
-            enableSearchButton(false);
-
-            // Prevent the form from submitting via the browser.
-            event.preventDefault();
-
-            searchViaAjax();
-
-        });
-
-    });
-
-    function searchViaAjax() {
-
-        var search = {};
-        search["username"] = $("#username").val();
-        search["email"] = $("#email").val();
-
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: "${home}search/api/getSearchResult",
-            data: JSON.stringify(search),
-            dataType: 'json',
-            timeout: 100000,
-            success: function (data) {
-                console.log("SUCCESS: ", data);
-                display(data);
-            },
-            error: function (e) {
-                console.log("ERROR: ", e);
-                display(e);
-            },
-            done: function () {
-                console.log("DONE");
-                enableSearchButton(true);
-            }
-        });
-
-    }
-
-    function enableSearchButton(flag) {
-        $("#btn-search").prop("disabled", flag);
-    }
-
-    function display(data) {
-        var json = "<h4>Ajax Response</h4><pre>"
-            + JSON.stringify(data, null, 4) + "</pre>";
-        $('#feedback').html(json);
-    }
-</script>
+<s:if test="usuarioList.size() > 0">
+    <table border="1px" cellpadding="8px">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+        </tr>
+        <s:iterator value="usuarioList" status="userStatus">
+            <tr>
+                <td><s:property value="id"/></td>
+                <td><s:property value="nombre"/></td>
+            </tr>
+        </s:iterator>
+    </table>
+</s:if>
+<br/>
+<br/>
 
 </body>
 </html>
