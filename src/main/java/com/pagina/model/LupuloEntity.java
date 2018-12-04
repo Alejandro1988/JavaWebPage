@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "usuario", schema = "pagina", catalog = "")
-public class UsuarioEntity {
+@Table(name = "lupulo", schema = "pagina", catalog = "")
+public class LupuloEntity {
 	private int id;
 	private String nombre;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "id", nullable = false)
 	public int getId() {
 		return id;
 	}
@@ -20,7 +20,7 @@ public class UsuarioEntity {
 	}
 
 	@Basic
-	@Column(name = "nombre")
+	@Column(name = "nombre", nullable = false, length = 25)
 	public String getNombre() {
 		return nombre;
 	}
@@ -33,7 +33,7 @@ public class UsuarioEntity {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		UsuarioEntity that = (UsuarioEntity) o;
+		LupuloEntity that = (LupuloEntity) o;
 		return id == that.id &&
 				Objects.equals(nombre, that.nombre);
 	}

@@ -1,12 +1,12 @@
 package com.pagina.bo;
 
-import com.pagina.model.UsuarioEntity;
+import com.pagina.model.Usuario;
 
 import java.util.List;
 
 public interface UsuarioBo {
 
-	void addUsuario(UsuarioEntity usuario);
+	void addUsuario(Usuario usuario);
 
-	List<UsuarioEntity> getAll();
+	List<Usuario> getAll();
 }

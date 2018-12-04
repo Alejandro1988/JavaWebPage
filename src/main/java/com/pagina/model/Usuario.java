@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "malta", schema = "pagina", catalog = "")
-public class MaltaEntity {
+@Table(name = "usuario", schema = "pagina")
+public class Usuario {
 	private int id;
 	private String nombre;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	public int getId() {
 		return id;
@@ -33,7 +34,7 @@ public class MaltaEntity {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		MaltaEntity that = (MaltaEntity) o;
+		Usuario that = (Usuario) o;
 		return id == that.id &&
 				Objects.equals(nombre, that.nombre);
 	}
@@ -42,4 +43,18 @@ public class MaltaEntity {
 	public int hashCode() {
 		return Objects.hash(id, nombre);
 	}
+
+//	@Override
+//	public boolean equals(Object o) {
+//		if (this == o) return true;
+//		if (o == null || getClass() != o.getClass()) return false;
+//		Usuario that = (Usuario) o;
+//		return id == that.id &&
+//				Objects.equals(nombre, that.nombre);
+//	}
+
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(id, nombre);
+//	}
 }

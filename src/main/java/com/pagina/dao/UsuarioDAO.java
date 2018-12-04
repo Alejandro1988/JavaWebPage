@@ -1,12 +1,7 @@
 package com.pagina.dao;
 
-import com.pagina.model.UsuarioEntity;
+import com.pagina.model.Usuario;
 
-import java.util.List;
+public interface UsuarioDAO extends GenericDao<Usuario, Integer>{
 
-public interface UsuarioDAO {
-
-	public void addusuario(UsuarioEntity usuario);
-
-	public List getAll();
 }

@@ -2,14 +2,14 @@ package com.pagina.action;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.pagina.bo.UsuarioBo;
-import com.pagina.model.UsuarioEntity;
+import com.pagina.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioAction implements ModelDriven {
-	private UsuarioEntity usuario = new UsuarioEntity();
-	private List<UsuarioEntity> usuarioList = new ArrayList<>();
+	private Usuario usuario = new Usuario();
+	private List<Usuario> usuarioList = new ArrayList<>();
 	private UsuarioBo usuarioBo;
 
 	public String addUsuario() throws Exception{
@@ -24,11 +24,11 @@ public class UsuarioAction implements ModelDriven {
 		return "SUCCESS";
 	}
 
-	public List<UsuarioEntity> getUsuarioList() {
+	public List<Usuario> getUsuarioList() {
 		return usuarioList;
 	}
 
-	public void setUsuarioList(List<UsuarioEntity> usuarioList) {
+	public void setUsuarioList(List<Usuario> usuarioList) {
 		this.usuarioList = usuarioList;
 	}
 

@@ -18,13 +18,11 @@
 <s:if test="usuarioList.size() > 0">
     <table border="1px" cellpadding="8px">
         <tr>
-            <th>Id</th>
             <th>Nombre</th>
         </tr>
-        <s:iterator value="usuarioList" status="userStatus">
+        <s:iterator value="usuarioList" status="rowStatus">
             <tr>
-                <td><s:property value="id"/></td>
-                <td><s:property value="nombre"/></td>
+                <td><s:property/></td>
             </tr>
         </s:iterator>
     </table>
