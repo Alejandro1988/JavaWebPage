@@ -12,8 +12,8 @@
         <property name="usuarioDAO" ref="usuarioDAO" />
     </bean>
 
-    <bean id="usuarioDAO" class="com.pagina.dao.impl.UsuarioDAOImpl" >
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+    <!--<bean id="usuarioDAO" class="com.pagina.dao.impl.UsuarioDAOImpl" >-->
+        <!--<property name="sessionFactory" ref="sessionFactory" />-->
+    <!--</bean>-->
 
 </beans>

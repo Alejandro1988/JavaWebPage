@@ -1,14 +1,14 @@
-package com.pagina.model;
+package com.pagina.entities;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cerveza_clarificante", schema = "pagina", catalog = "")
-@IdClass(CervezaClarificanteEntityPK.class)
-public class CervezaClarificante {
+@Table(name = "cerveza_levadura", schema = "pagina", catalog = "")
+@IdClass(CervezaLevaduraEntityPK.class)
+public class CervezaLevaduraEntity {
 	private int idCerveza;
-	private int idClarificante;
+	private int idLevadura;
 	private int cantidad;
 
 	@Id
@@ -22,13 +22,13 @@ public class CervezaClarificante {
 	}
 
 	@Id
-	@Column(name = "idClarificante", nullable = false)
-	public int getIdClarificante() {
-		return idClarificante;
+	@Column(name = "idLevadura", nullable = false)
+	public int getIdLevadura() {
+		return idLevadura;
 	}
 
-	public void setIdClarificante(int idClarificante) {
-		this.idClarificante = idClarificante;
+	public void setIdLevadura(int idLevadura) {
+		this.idLevadura = idLevadura;
 	}
 
 	@Basic
@@ -45,14 +45,14 @@ public class CervezaClarificante {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		CervezaClarificante that = (CervezaClarificante) o;
+		CervezaLevaduraEntity that = (CervezaLevaduraEntity) o;
 		return idCerveza == that.idCerveza &&
-				idClarificante == that.idClarificante &&
+				idLevadura == that.idLevadura &&
 				cantidad == that.cantidad;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idCerveza, idClarificante, cantidad);
+		return Objects.hash(idCerveza, idLevadura, cantidad);
 	}
 }

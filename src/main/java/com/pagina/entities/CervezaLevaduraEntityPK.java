@@ -1,18 +1,16 @@
-package com.pagina.model;
+package com.pagina.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "cerveza_levadura", schema = "pagina", catalog = "")
-@IdClass(CervezaLevaduraEntityPK.class)
-public class CervezaLevaduraEntity {
+public class CervezaLevaduraEntityPK implements Serializable {
 	private int idCerveza;
 	private int idLevadura;
-	private int cantidad;
 
-	@Id
 	@Column(name = "idCerveza", nullable = false)
+	@Id
 	public int getIdCerveza() {
 		return idCerveza;
 	}
@@ -21,8 +19,8 @@ public class CervezaLevaduraEntity {
 		this.idCerveza = idCerveza;
 	}
 
-	@Id
 	@Column(name = "idLevadura", nullable = false)
+	@Id
 	public int getIdLevadura() {
 		return idLevadura;
 	}
@@ -31,28 +29,17 @@ public class CervezaLevaduraEntity {
 		this.idLevadura = idLevadura;
 	}
 
-	@Basic
-	@Column(name = "cantidad", nullable = false)
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		CervezaLevaduraEntity that = (CervezaLevaduraEntity) o;
+		CervezaLevaduraEntityPK that = (CervezaLevaduraEntityPK) o;
 		return idCerveza == that.idCerveza &&
-				idLevadura == that.idLevadura &&
-				cantidad == that.cantidad;
+				idLevadura == that.idLevadura;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idCerveza, idLevadura, cantidad);
+		return Objects.hash(idCerveza, idLevadura);
 	}
 }

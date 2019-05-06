@@ -7,7 +7,7 @@
 <h1>Esto no es un Titulo</h1>
 
 <h2>Usuarios</h2>
-<s:form action="addUsuario">
+<s:form action="addUsuarioAction">
     <s:textfield name="nombre" label="Nombre" value=""/>
     <%--<s:textarea name="address" label="Address" value="" cols="50" rows="5" />--%>
     <s:submit/>

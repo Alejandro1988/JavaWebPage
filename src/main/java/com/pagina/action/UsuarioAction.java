@@ -2,7 +2,7 @@ package com.pagina.action;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.pagina.bo.UsuarioBo;
-import com.pagina.model.Usuario;
+import com.pagina.entities.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +38,8 @@ public class UsuarioAction implements ModelDriven {
 
 	public void setUsuarioBo(UsuarioBo usuarioBo) {
 		this.usuarioBo = usuarioBo;
+	}
+
+	public void setNombre(String nombre) {
 	}
 }

@@ -9,11 +9,16 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<jdk.version>1.10</jdk.version>
+		<jdk.version>12</jdk.version>
 	</properties>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>3.2.2</version>
+			<type>maven-plugin</type>
+		</dependency>
 		<!-- Struts 2 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
@@ -21,32 +26,44 @@
 			<version>2.1.8</version>
 		</dependency>
 
-		<!-- Spring framework -->
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring</artifactId>
 			<version>2.5.6</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>5.0.8.RELEASE</version>
+			<artifactId>spring-orm</artifactId>
+			<version>5.0.2.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-spring-plugin</artifactId>
 			<version>2.1.8</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-core</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
-
-        <!-- MySQL database driver -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-			<version>8.0.12</version>
+        <!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.12.Final</version>
 		</dependency>
 
-        <!-- Hibernate core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate</artifactId>
@@ -54,25 +71,32 @@
             <type>pom</type>
 		</dependency>
 
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.5.6-Final</version>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-annotations</artifactId>-->
+            <!--<version>3.5.6-Final</version>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>hibernate-annotations</groupId>-->
+			<!--<artifactId>hibernate-annotations</artifactId>-->
+			<!--<version>3.3.0.GA</version>-->
+		<!--</dependency>-->
+
+		<!-- MySQL database driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.12</version>
 		</dependency>
 
 		<dependency>
-			<groupId>hibernate-annotations</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.3.0.GA</version>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
 		</dependency>
 
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.3.5.Final</version>
-        </dependency>
-
-        <dependency>
+		<dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>1.6.1</version>
@@ -103,14 +127,23 @@
         </dependency>
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>JBoss repository</id>
-			<url>http://repository.jboss.com/maven2/</url>
-		</repository>
-	</repositories>
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>JBoss repository</id>-->
+<!--			<url>http://repository.jboss.com/maven2/</url>-->
+<!--		</repository>-->
+<!--	</repositories>-->
 
 	<build>
+		<pluginManagement>
+		<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>3.2.2</version>
+		</plugin>
+		</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -125,18 +158,15 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
+				<version>3.2.2</version>
 			</plugin>
 
 			<!-- Deploy to WildFly -->
-			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.2.2.Final</version>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.wildfly.plugins</groupId>-->
+<!--				<artifactId>wildfly-maven-plugin</artifactId>-->
+<!--				<version>1.2.2.Final</version>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 </project>

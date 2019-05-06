@@ -1,15 +1,16 @@
-package com.pagina.model;
+package com.pagina.entities;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "clarificante", schema = "pagina", catalog = "")
-public class ClarificanteEntity {
+@Table(name = "usuario", schema = "pagina")
+public class Usuario {
 	private int id;
 	private String nombre;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	public int getId() {
 		return id;
@@ -20,7 +21,7 @@ public class ClarificanteEntity {
 	}
 
 	@Basic
-	@Column(name = "nombre", nullable = false, length = 25)
+	@Column(name = "nombre", nullable = false, length = 50)
 	public String getNombre() {
 		return nombre;
 	}
@@ -33,7 +34,7 @@ public class ClarificanteEntity {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		ClarificanteEntity that = (ClarificanteEntity) o;
+		Usuario that = (Usuario) o;
 		return id == that.id &&
 				Objects.equals(nombre, that.nombre);
 	}
@@ -42,4 +43,18 @@ public class ClarificanteEntity {
 	public int hashCode() {
 		return Objects.hash(id, nombre);
 	}
+
+//	@Override
+//	public boolean equals(Object o) {
+//		if (this == o) return true;
+//		if (o == null || getClass() != o.getClass()) return false;
+//		Usuario that = (Usuario) o;
+//		return id == that.id &&
+//				Objects.equals(nombre, that.nombre);
+//	}
+
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(id, nombre);
+//	}
 }

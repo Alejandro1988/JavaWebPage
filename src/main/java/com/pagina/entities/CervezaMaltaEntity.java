@@ -1,4 +1,4 @@
-package com.pagina.model;
+package com.pagina.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

@@ -1,6 +1,7 @@
 package com.pagina.dao.impl;
 
 import com.pagina.dao.GenericDao;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,13 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
 	}
 
 	protected Session currentSession() {
-		return sessionFactory.getCurrentSession();
+		Session session;
+		try {
+			session = sessionFactory.getCurrentSession();
+		} catch (HibernateException e) {
+			session = sessionFactory.openSession();
+		}
+		return session;
 	}
 
 	@Override
@@ -63,5 +70,13 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
 	@SuppressWarnings("unchecked")
 	public List<E> getAll() {
 		return currentSession().createCriteria(daoType).list();
+	}
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 }

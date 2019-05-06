@@ -2,7 +2,7 @@ package com.pagina.bo.impl;
 
 import com.pagina.bo.UsuarioBo;
 import com.pagina.dao.UsuarioDAO;
-import com.pagina.model.Usuario;
+import com.pagina.entities.Usuario;
 
 import java.util.List;
 

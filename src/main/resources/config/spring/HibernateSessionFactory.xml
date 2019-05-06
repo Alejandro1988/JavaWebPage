@@ -2,28 +2,105 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <!-- Hibernate session factory -->
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="configLocation">
-            <value>classpath:/hibernate.cfg.xml</value>
-        </property>
-        <!--<property name="hibernateProperties">-->
-            <!--<props>-->
-                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
-                <!--<prop key="hibernate.show_sql">true</prop>-->
-                <!--<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/PAGINA</prop>-->
-                <!--<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>-->
-            <!--</props>-->
-        <!--</property>-->
+	<!-- Hibernate session factory -->
+	<!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
 
-        <!--<property name="mappingResources">-->
-            <!--<list>-->
-                <!--<value>com/pagina/hibernate/Usuario.hbm.xml</value>-->
-            <!--</list>-->
-        <!--</property>-->
+	<!--<property name="packagesToScan" value="com.pagina.entities"/>-->
 
-    </bean>
+	<!--<property name="hibernateProperties">-->
+	<!--<props>-->
+	<!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+	<!--<prop key="hibernate.show_sql">true</prop>-->
+	<!--<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/PAGINA</prop>-->
+	<!--<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>-->
+	<!--<prop key="username">root</prop>-->
+	<!--<prop key="password">1234</prop>-->
+	<!--</props>-->
+	<!--</property>-->
+	<!--</bean>-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/PAGINA"/>
+		<property name="username" value="root"/>
+		<property name="password" value="1793"/>
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="packagesToScan" value="com.pagina.entities"/>
+		<property name="hibernateProperties">
+			<props>
+				<!-- Hibernate basic configuration -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!--<context:annotation-config />-->
+	<!--<tx:annotation-driven />-->
+
+	<!-- Initialization of DAOs -->
+	<bean id="usuarioDAO" name="usuarioDAO" class="com.pagina.dao.impl.UsuarioDAOImpl" autowire="byName"/>
+
+	<!--<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">-->
+	<!--<property name="driverClassName" value="org.h2.Driver"/>-->
+	<!--<property name="url" value="jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"/>-->
+	<!--<property name="username" value="sa"/>-->
+	<!--<property name="password" value="sa"/>-->
+	<!--</bean>-->
+
+	<!--<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+	<!--<property name="sessionFactory" ref="sessionFactory"/>-->
+	<!--</bean>-->
+
+	<!--<property name="hibernateProperties">-->
+	<!--<props>-->
+	<!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+	<!--<prop key="hibernate.show_sql">true</prop>-->
+	<!--<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/PAGINA</prop>-->
+	<!--<prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>-->
+	<!--</props>-->
+	<!--</property>-->
+
+	<!--<property name="mappingResources">-->
+	<!--<list>-->
+	<!--<value>com/pagina/hibernate/Usuario.hbm.xml</value>-->
+	<!--</list>-->
+	<!--</property>-->
+
+	<!--<property name="configLocation">-->
+	<!--<value>classpath:/hibernate.cfg.xml</value>-->
+	<!--</property>-->
+
+	<!--<session-factory>-->
+	<!--<property name="connection.url">jdbc:mysql://localhost:3306/PAGINA</property>-->
+	<!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+	<!--<property name="hibernate.connection.username">root</property>-->
+	<!--<property name="hibernate.connection.password">'1234'</property>-->
+	<!--<property name="hibernate.connection.pool_size">1</property>-->
+	<!--<property name="hibernate.current_session_context_class">thread</property>-->
+	<!--<property name="hibernate.show_sql">true</property>-->
+	<!--<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
+	<!--<mapping resource="com/pagina/hibernate/Usuario.hbm.xml"/>-->
+	<!--<mapping class="com.pagina.entitiesies.Usuario"/>-->
+	<!--<mapping class="com.pagina.entitiesies.Cerveza"/>-->
+	<!--<mapping class="com.pagina.entitiesies.CervezaClarificante"/>-->
+	<!--<mapping class="com.pagina.entitiesies.CervezaLevaduraEntity"/>-->
+	<!--<mapping class="com.pagina.entitiesies.CervezaLupuloEntity"/>-->
+	<!--<mapping class="com.pagina.entitiesies.CervezaMaltaEntity"/>-->
+	<!--<mapping class="com.pagina.entitiesies.ClarificanteEntity"/>-->
+	<!--<mapping class="com.pagina.entitiesies.ElaboracionEntity"/>-->
+	<!--<mapping class="com.pagina.entitiesies.LevaduraEntity"/>-->
+	<!--<mapping class="com.pagina.entitiesies.LupuloEntity"/>-->
+	<!--<mapping class="com.pagina.entitiesies.MaltaEntity"/>-->
+	<!--</session-factory>-->
+
 </beans>

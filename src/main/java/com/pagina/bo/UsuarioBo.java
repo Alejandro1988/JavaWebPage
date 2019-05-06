@@ -1,6 +1,6 @@
 package com.pagina.bo;
 
-import com.pagina.model.Usuario;
+import com.pagina.entities.Usuario;
 
 import java.util.List;
 

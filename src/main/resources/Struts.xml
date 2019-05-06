@@ -13,12 +13,12 @@
         </action>
 
         <action name="addUsuarioAction"
-                class="com.pagina.action.usuarioAction" method="addUsuario">
+                class="com.pagina.action.UsuarioAction" method="addUsuario">
             <result name="SUCCESS">pages/usuario.jsp</result>
         </action>
 
         <action name="listUsuarioAction"
-                class="com.pagina.action.usuarioAction" method="getAll">
+                class="com.pagina.action.UsuarioAction" method="getAll">
             <result name="SUCCESS">pages/usuario.jsp</result>
         </action>
     </package>

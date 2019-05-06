@@ -1,29 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/PAGINA</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">'1234'</property>
-        <property name="hibernate.connection.pool_size">1</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <!--<mapping resource="com/pagina/hibernate/Usuario.hbm.xml" />-->
-        <mapping class="com.pagina.model.Usuario"/>
-        <!--<mapping class="com.pagina.model.Cerveza"/>-->
-        <!--<mapping class="com.pagina.model.CervezaClarificante-->
-        <!--<mapping class="com.pagina.model.CervezaLevaduraEntity"/>-->
-        <!--<mapping class="com.pagina.model.CervezaLupuloEntity"/>-->
-        <!--<mapping class="com.pagina.model.CervezaMaltaEntity"/>-->
-        <!--<mapping class="com.pagina.model.ClarificanteEntity"/>-->
-        <!--<mapping class="com.pagina.model.ElaboracionEntity"/>-->
-        <!--<mapping class="com.pagina.model.LevaduraEntity"/>-->
-        <!--<mapping class="com.pagina.model.LupuloEntity"/>-->
-        <!--<mapping class="com.pagina.model.MaltaEntity"/>-->
-    </session-factory>
+  <session-factory>
+    <property name="connection.url"/>
+    <property name="connection.driver_class"/>
+    <mapping class="com.pagina.entities.Usuario"/>
 
+	  <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
 </hibernate-configuration>

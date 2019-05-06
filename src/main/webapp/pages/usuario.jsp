@@ -7,7 +7,7 @@
 <h1>Struts 2 + Spring + Hibernate integration example</h1>
 
 <h2>Add Customer</h2>
-<s:form action="addUsuarioAction" >
+<s:form action="addUsuario" >
     <s:textfield name="nombre" label="Nombre" value="" />
     <s:submit />
 </s:form>
